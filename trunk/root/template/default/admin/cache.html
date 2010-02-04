@@ -1,0 +1,15 @@
+<h1>{L_CACHE_DESC}</h1><br />
+<p>{_CACHE_DESC_LONG}
+<!-- IF MESSAGE -->	
+	<fieldset>
+		<legend>Message</legend>
+		<!-- IF MESSAGE -->{L_MESSAGE_TEXT}<!-- ENDIF -->
+	</fieldset>
+<!-- ENDIF -->
+<form method="post" action="cache.php">
+	<fieldset class="submit-buttons">
+		<input type="hidden" name="del" value="1" />
+		<input class="button1" type="submit" name="submit" value="{L_CACHE_DEL}" />
+	</fieldset>
+</form>
+</p>

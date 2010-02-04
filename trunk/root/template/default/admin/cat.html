@@ -1,0 +1,69 @@
+<h1>{LINK_CAT}</h1> <br />
+<!-- IF CASE == 'new' -->
+<p>
+	{L_NEW_DESC_LONG}
+	<form method="post" action="cat.php?case=new-go">
+	<fieldset>
+		<legend>New Category</legend>
+			<dl>
+				<dt><label for="headline">{L_CATEGORY_DESC}:</label><br /><span class="explain">{L_CATEGORY_DESC_LONG}</dt>
+				<dd><input id="headline" type="text" size="25" name="headline" value="" /></dd>
+			</dl>
+	</fieldset>
+	<fieldset class="submit-buttons">
+			<input class="button1" type="submit" name="submit" value="{L_CAT_SAVE}" />
+	</fieldset>
+	</form>
+</p>
+<!-- ELSEIF CASE == 'edit' -->
+<p>
+	{L_EDIT_DESC}
+	<form method="post" action="cat.php?case=edit-go">
+	<fieldset>
+		<legend>Edit Category</legend>
+			<dl>
+				<dt><label for="headline">{L_CATEGORY_DESC}:</label><br /><span class="explain">{L_CATEGORY_DESC_LONG}</dt>
+				<dd><input id="headline" type="text" size="25" name="headline" value="{HEADLINE}" /></dd>
+			</dl>
+	</fieldset>
+	<fieldset class="submit-buttons">
+			<input type="hidden" name="id" value="{ID}" />
+			<input class="button1" type="submit" name="submit" value="{L_CAT_SAVE}" />
+	</fieldset>
+	</form>
+</p>
+<!-- ELSE -->
+<p>{L_DESC}{L_EDIT_DESC}
+<!-- IF ERROR -->
+<fieldset>
+		<legend>Message</legend>
+		<!-- BEGIN error -->
+			<!-- IF error.NO_ERROR --><font color="green">{L_NO_ERROR}</font><!-- ENDIF -->
+			<!-- IF error.DEL --><font color="green">{L_DEL_TRUE}</font><!-- ENDIF -->
+			<!-- IF error.THERE --><font color="#FF0000">{L_ERROR_THERE}</font><!-- ENDIF -->
+		<!-- END error -->
+</fieldset>
+<!-- ENDIF -->
+	<table cellspacing="1">
+		<thead>
+			<tr>
+				<th>#</th>
+				<th>Name</th>
+				<th width="25%">Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+<!-- BEGIN cat -->
+				<tr class="<# TRCLASS #>">
+					<td>{cat.ID}</td>
+					<td>{cat.HEADLINE}</td>
+					<td><a href="cat.php?case=edit&id={cat.ID}">{L_EDIT}</a> | <a href="cat.php?case=del&id={cat.ID}">{L_DELETE}</a></td>
+				</tr>
+<!-- END cat -->
+		</tbody>
+	</table>
+	<fieldset class="quick" style="float: left;">
+		<a class="button2" href="cat.php?case=new">{L_NEW_DESC}</a>
+	</fieldset>
+</p>
+<!-- ENDIF -->

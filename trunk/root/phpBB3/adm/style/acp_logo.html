@@ -1,0 +1,35 @@
+<!-- INCLUDE overall_header.html -->
+<a name="maincontent"></a>
+<h1>Logo Upload</h1>
+<p>{L_LOGO_DESC}</p>
+<!-- IF AUSGABE -->
+<fieldset>
+	<legend>Status:</legend>
+	<dl>
+	<font color="red"><b>{AUSGABE}</b></font>
+	</dl>
+</fieldset>
+<!-- ENDIF -->
+<fieldset>
+	<legend>{L_ACTUAL}:</legend>
+	<dl>
+	{LOGO}
+	</dl>
+</fieldset>
+<form name="bildupload" enctype="multipart/form-data" method="post" action="{U_ACTION}">
+	<fieldset>
+		<legend>{L_UPLOAD_NEW}:</legend>
+		<dl>
+			<dt><label for="neues_logo">{L_PICTUREDATA}:</label><br /><span>{L_PICTURE_DESC}</span></dt>
+			<dd><label><input type="hidden" name="gesendet" value="1"><input type="file" name="upload" size="30"></label></dd>
+		</dl>
+	</fieldset>
+	
+	<fieldset class="submit-buttons">
+		<input class="button1" type="submit" id="submit" name="Upload" value="Logo Upload" />&nbsp;
+		<input class="button1" type="submit" id="submit" name="delete" value="Delete Logo" />&nbsp;
+		<input class="button2" type="reset" id="reset" name="reset" value="{L_RESET}" />
+		{S_FORM_TOKEN}
+</fieldset>
+</form>
+<!-- INCLUDE overall_footer.html -->

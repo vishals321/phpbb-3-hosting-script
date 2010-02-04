@@ -1,0 +1,92 @@
+<form method="post" action="settings.php">
+	<h1>{L_SETTINGS_DESC}</h1><br />
+	<p>{L_SETTINGS_DESC_}
+		<!-- IF ERROR or MESSAGE -->
+		<fieldset>
+			<legend>Message</legend>
+			<!-- IF ERROR -->{L_ERROR_ADRESS}<!-- ELSEIF MESSAGE -->{L_MESSAGE_TEXT}<!-- ENDIF -->
+		</fieldset>
+		<!-- ENDIF -->
+		<!-- BEGIN settings -->
+		<fieldset>
+			<legend>{L_SETTINGS_DESC}</legend>
+			<dl>
+				<dt><label for="site_title">{L_DOMAIN_SITE}:</label><br /><span class="explain">{L_DOMAIN_BSP}</dt>
+				<dd><input id="site_title" type="text" size="25" name="site_title" value="{settings.SITE_TITLE}" /></dd>
+			</dl>
+			<dl>
+				<dt><label for="meta_keywords">Meta-Keywords:</label><br /><span class="explain">{L_META_KEYWORDS_DESC}</span></dt>
+				<dd><input id="meta_keywords" type="text" size="25" name="meta_keywords" value="{settings.META_KEYWORDS}" /></dd>
+			</dl>
+			<dl>
+				<dt><label for="meta_description">Meta-Description:</label><br /><span class="explain">{L_META_DESCRIPTION_DESC}</span></dt>
+				<dd><input id="meta_description" type="text" size="25" name="meta_description" value="{settings.META_DESCRIPTION}" /></dd>
+			</dl>
+			<dl>
+				<dt><label for="site_contact">E-Mail:</label><br /><span class="explain">{L_EMAIL_DESC}</span></dt>
+				<dd><input id="site_contact" type="text" size="25" name="site_contact" value="{settings.SITE_CONTACT}" /></dd>
+			</dl>
+			<dl>
+				<dt><label for="style_name">Style:</label><br /></dt>
+				<dd><input id="style_name" type="text" size="25" name="style_name" value="{settings.STYLE_NAME}" /></dd>
+			</dl>
+			<dl>
+				<dt><label for="default_language">{L_LANGUAGE_DESC}:</label><br /></dt>
+				<dd><input id="default_language" type="text" size="25" name="default_language" value="{settings.DEFAULT_LANGUAGE}" /></dd>
+			</dl>
+		</fieldset>
+		<fieldset>
+			<legend>{L_IMPRESSUM_DESC}</legend>
+			<dl>
+				<dt><label for="site_owner">{L_SITE_OWNER}:</label></dt>
+				<dd><input id="site_owner" type="text" size="25" name="site_owner" value="{settings.SITE_OWNER}"/></dd>
+			</dl>
+			<dl>
+				<dt><label for="site_street">{L_SITE_STREET}:</label></dt>
+				<dd><input id="site_street" type="text" size="25" name="site_street" value="{settings.SITE_STREET}" /></dd>
+			</dl>
+			<dl>
+				<dt><label for="site_city">{L_SITE_CITY}:</label></dt>
+				<dd><input id="site_city" type="text" size="25" name="site_city" value="{settings.SITE_CITY}" /></dd>
+			</dl>
+			<dl>
+				<dt><label for="site_fon">{L_SITE_FON}:</label></dt>
+				<dd><input id="site_fon" type="text" size="25" name="site_fon" value="{settings.SITE_FON}" /></dd>
+			</dl>
+			<dl>
+				<dt><label for="site_icq">{L_SITE_ICQ}:</label></dt>
+				<dd><input id="site_icq" type="text" size="25" name="site_icq" value="{settings.SITE_ICQ}" /></dd>
+			</dl>
+		</fieldset>
+		<fieldset>
+			<legend>Security</legend>
+			<dl>
+				<dt><label for="re_captcha_private">Re-Captcha Private-Key:</label><br /><span class="explain">{L_CAPTCHA}</span></dt>
+				<dd><input id="re_captcha_private" type="text" size="25" name="re_captcha_private" value="{settings.RE_CAPTCHA_PRIVATE}" /></dd>
+			</dl>
+			<dl>
+				<dt><label for="re_captcha_public">Re-Captcha Public-Key:</label><br /><span class="explain">{L_CAPTCHA}</span></dt>
+				<dd><input id="re_captcha_public" type="text" size="25" name="re_captcha_public" value="{settings.RE_CAPTCHA_PUBLIC}" /></dd>
+			</dl>
+		</fieldset>
+		<fieldset>
+			<legend>{L_FORUM_SETTINGS}</legend>
+			<dl>
+				<dt><label for="gzip">{L_GZIP}</label><br /><span class="explain">{L_GZIP_DESC}</span></dt>
+				<dd><input id="gzip" type="text" size="25" name="gzip" value="{settings.GZIP}" /></dd>
+			</dl>
+			<dl>
+				<dt><label for="avatar_filesize">{L_AVATAR_FILESIZE}</label><br /><span class="explain">{L_AVATAR_FILESIZE_DESC}</span></dt>
+				<dd><input id="avatar_filesize" type="text" size="25" name="avatar_filesize" value="{settings.AVATAR_FILESIZE}" /></dd>
+			</dl>
+			<dl>
+				<dt><label for="attachment_quota">{L_ATTACHMENT_QUOTA}</label><br /><span class="explain">{L_ATTACHMENT_QUOTA_DESC}</span></dt>
+				<dd><input id="attachment_quota" type="text" size="25" name="attachment_quota" value="{settings.ATTACHMENT_QUOTA}" /></dd>
+			</dl>
+		</fieldset>
+		<fieldset class="submit-buttons">
+			<input class="button1" type="submit" name="submit" value="{L_SETTINGS_SAVE}" />
+		</fieldset>
+		<!-- END settings -->
+	</p>
+</form>
