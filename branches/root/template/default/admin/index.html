@@ -1,0 +1,49 @@
+<h1>Admin Control Panel Index</h1><br />
+<div align="right">Site: {SITE_LINKS}</div>
+{L_ACP_DESC}
+<!-- IF ERROR or DEL or NO_FORUM-->
+<fieldset>
+	<legend>Error</legend>
+	<!-- IF ERROR --><font color="red">{L_ERROR_NO_FORUMS}</font><!-- ENDIF -->
+	<!-- IF DEL --><font color="green">{L_DEL_FORUM}</font><!-- ENDIF -->
+	<!-- IF NO_FORUM --><font color="red">{L_NO_FORUM}</font><!-- ENDIF -->
+</fieldset>
+<!-- ELSE -->
+<!-- BEGIN info -->
+			<fieldset>
+				<legend>Forum: {info.DOMAIN}</legend>
+					<table>
+						<tr>
+							<th width="25%">Link:</th>
+							<td width="25%"><a href="http://www.{info.DOMAIN}.{TITLE}" target="_blank">www.{info.DOMAIN}.{TITLE}</td>
+							<th width="25%">{L_DATE_DESC}</th>
+							<td width="25%">{info.DATE_CREATED}</td>
+						<tr>
+						<tr>
+							<th width="25%">{L_TITLE_DESC}</th>
+							<td width="25%">{info.TITLE}</td>
+							<th width="25%">{L_DESC_DESC}</th>
+							<td width="25%">{info.DESC}</td>
+						<tr>
+						<tr>
+							<th width="25%">{L_TOPICS_DESC}</th>
+							<td width="25%">{info.TOPICS}</td>
+							<th width="25%">{L_ANSWERS_DESC}</th>
+							<td width="25%">{info.ANSWERS}</td>
+						<tr>
+						<tr>
+							<th width="25%">{L_TOTAL_MEMBERS_DESC}</th>
+							<td width="25%">{info.MEMBERS}</td>
+							<th width="25%">{L_NO_POST_DESC}<?php echo $no_post_desc; ?></th>
+							<td width="25%">{info.DAY_WITHOUT_POST}</td>
+						<tr>
+						<tr>
+							<th width="25%">{L_SETTINGS_DESC}</th>
+							<td width="25%"><a href="data.php?case=edit&domain={info.DOMAIN}">{L_EDIT_SETTINGS}</a></td>
+							<th width="25%">{L_DELETE_DESC}</th>
+							<td width="25%"><a href="index.php?delete={info.DOMAIN}">{L_DELETE_DESC}</a></td>
+						<tr>
+				</table>
+			</fieldset>
+<!-- END info -->
+<!-- ENDIF -->

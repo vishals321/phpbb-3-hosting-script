@@ -1,0 +1,146 @@
+<div id="content">
+		<div class="post">
+			<h2><?php echo (isset($this->_rootref['LINK_REGISTER'])) ? $this->_rootref['LINK_REGISTER'] : ''; ?></h2>
+<?php if ($this->_rootref['NOT_WRITEABLE']) {  ?>
+
+<font color="red">
+ <?php echo ((isset($this->_rootref['L_NOT_WRITEABLE'])) ? $this->_rootref['L_NOT_WRITEABLE'] : ((isset($user->lang['NOT_WRITEABLE'])) ? $user->lang['NOT_WRITEABLE'] : '{ NOT_WRITEABLE }')); ?>
+
+</font>
+<?php } else { if ($this->_rootref['VAR1']) {  ?>
+
+		<h3><?php echo ((isset($this->_rootref['L_REGISTER_FINISH_DESC'])) ? $this->_rootref['L_REGISTER_FINISH_DESC'] : ((isset($user->lang['REGISTER_FINISH_DESC'])) ? $user->lang['REGISTER_FINISH_DESC'] : '{ REGISTER_FINISH_DESC }')); ?></h3>
+		<div class="entry">
+			<fieldset>
+				<legend><b>Data</b></legend>
+				<?php $_var_count = (isset($this->_tpldata['var'])) ? sizeof($this->_tpldata['var']) : 0;if ($_var_count) {for ($_var_i = 0; $_var_i < $_var_count; ++$_var_i){$_var_val = &$this->_tpldata['var'][$_var_i]; ?>
+
+				<table>
+					<tr>
+						<th>URL:</th>
+						<td><a href="http://www.<?php echo $_var_val['DOMAIN']; ?>.<?php echo (isset($this->_rootref['TITLE'])) ? $this->_rootref['TITLE'] : ''; ?>" target="_blank">www.<?php echo $_var_val['DOMAIN']; ?>.<?php echo (isset($this->_rootref['TITLE'])) ? $this->_rootref['TITLE'] : ''; ?></a></td>
+					</tr>
+					<tr>
+						<th>User-Name:</th>
+						<td><?php echo $_var_val['USER']; ?></td>
+					</tr>
+					<tr>
+						<th>Password:</th>
+						<td><?php echo $_var_val['PASSWORD']; ?></td>
+					</tr>
+					<tr>
+						<th>E-Mail:</th>
+						<td><?php echo $_var_val['MAIL']; ?></td>
+					</tr>
+				</table>
+				<?php }} ?>
+
+			</fieldset>
+		</div>
+	<?php } else { ?>
+
+				<h3><?php echo ((isset($this->_rootref['L_REGISTER_DESC'])) ? $this->_rootref['L_REGISTER_DESC'] : ((isset($user->lang['REGISTER_DESC'])) ? $user->lang['REGISTER_DESC'] : '{ REGISTER_DESC }')); ?></h3>
+				<div class="entry">
+					<form method="post" action="register.php">
+					<p>
+					<?php if ($this->_rootref['VAR']) {  $_error_count = (isset($this->_tpldata['error'])) ? sizeof($this->_tpldata['error']) : 0;if ($_error_count) {for ($_error_i = 0; $_error_i < $_error_count; ++$_error_i){$_error_val = &$this->_tpldata['error'][$_error_i]; ?>
+
+						 <fieldset>
+							<legend><?php echo ((isset($this->_rootref['L_MELDUNG'])) ? $this->_rootref['L_MELDUNG'] : ((isset($user->lang['MELDUNG'])) ? $user->lang['MELDUNG'] : '{ MELDUNG }')); ?></legend>
+							<?php if ($_error_val['ADRESS']) {  echo $_error_val['ADRESS']; } if ($_error_val['RECAPTCHA']) {  echo $_error_val['RECAPTCHA']; } if ($_error_val['USER_NAME']) {  echo $_error_val['USER_NAME']; } if ($_error_val['PASSWORD']) {  echo $_error_val['PASSWORD']; } if ($_error_val['PASSWORD_W']) {  echo $_error_val['PASSWORD_W']; } if ($_error_val['PASSWORD_W_H']) {  echo $_error_val['PASSWORD_W_H']; } if ($_error_val['AGB']) {  echo $_error_val['AGB']; } if ($_error_val['DOMAIN']) {  echo $_error_val['DOMAIN']; } if ($_error_val['DOMAIN_SONDERZEICHEN']) {  echo $_error_val['DOMAIN_SONDERZEICHEN']; } if ($_error_val['CAT']) {  echo $_error_val['CAT']; } if ($_error_val['ADRESS']) {  echo $_error_val['ADRESS']; } if ($_error_val['THERE']) {  echo $_error_val['THERE']; } ?>
+
+						 </fieldset>
+						 <?php }} ?>
+
+						 <br/>
+					<?php } $_post_count = (isset($this->_tpldata['post'])) ? sizeof($this->_tpldata['post']) : 0;if ($_post_count) {for ($_post_i = 0; $_post_i < $_post_count; ++$_post_i){$_post_val = &$this->_tpldata['post'][$_post_i]; ?>
+
+						<fieldset>
+							<legend><?php echo ((isset($this->_rootref['L_FORUM'])) ? $this->_rootref['L_FORUM'] : ((isset($user->lang['FORUM'])) ? $user->lang['FORUM'] : '{ FORUM }')); ?></legend>
+							<table>
+								<tr>
+									<th style="padding: 15px 0 0 0px;"><?php echo ((isset($this->_rootref['L_DOMAIN'])) ? $this->_rootref['L_DOMAIN'] : ((isset($user->lang['DOMAIN'])) ? $user->lang['DOMAIN'] : '{ DOMAIN }')); ?>:</th>
+									<td><input type="text" name="DOMAIN" id="input-text" value="<?php echo $_post_val['DOMAIN']; ?>"/></td>
+								</tr>
+								<tr>
+									<th style="padding: 15px 0 0 0px;"><?php echo ((isset($this->_rootref['L_TITLE_FORUM'])) ? $this->_rootref['L_TITLE_FORUM'] : ((isset($user->lang['TITLE_FORUM'])) ? $user->lang['TITLE_FORUM'] : '{ TITLE_FORUM }')); ?>: (optional)</th>
+									<td><input type="text" name="TITLE" id="input-text" value="<?php echo $_post_val['TITLE']; ?>"/></td>
+								</tr>
+								<tr>
+									<th style="padding: 15px 0 0 0px;"><?php echo ((isset($this->_rootref['L_DESC'])) ? $this->_rootref['L_DESC'] : ((isset($user->lang['DESC'])) ? $user->lang['DESC'] : '{ DESC }')); ?>: (optional)</th>
+									<td><input type="text" name="DESC" id="input-text" value="<?php echo $_post_val['DESC']; ?>"/></td>
+								</tr>
+					<?php }} ?>
+
+								<tr>
+									<th><?php echo ((isset($this->_rootref['L_CATEGORY'])) ? $this->_rootref['L_CATEGORY'] : ((isset($user->lang['CATEGORY'])) ? $user->lang['CATEGORY'] : '{ CATEGORY }')); ?>:</th>
+									<td>
+										<select name="CATEGORY" >
+											<option value=""><?php echo ((isset($this->_rootref['L_CAT_DESC'])) ? $this->_rootref['L_CAT_DESC'] : ((isset($user->lang['CAT_DESC'])) ? $user->lang['CAT_DESC'] : '{ CAT_DESC }')); ?></option>
+											<?php $_cat_count = (isset($this->_tpldata['cat'])) ? sizeof($this->_tpldata['cat']) : 0;if ($_cat_count) {for ($_cat_i = 0; $_cat_i < $_cat_count; ++$_cat_i){$_cat_val = &$this->_tpldata['cat'][$_cat_i]; ?>
+
+												<option value="<?php echo $_cat_val['ID']; ?>"><?php echo $_cat_val['HEADLINE']; ?></option>
+											<?php }} ?>
+
+										</select>
+									</td>
+								</tr>
+					<?php $_post_count = (isset($this->_tpldata['post'])) ? sizeof($this->_tpldata['post']) : 0;if ($_post_count) {for ($_post_i = 0; $_post_i < $_post_count; ++$_post_i){$_post_val = &$this->_tpldata['post'][$_post_i]; ?>
+
+							</table>
+						</fieldset><br/>
+						<fieldset>
+							<legend><?php echo ((isset($this->_rootref['L_ADMIN_DATA'])) ? $this->_rootref['L_ADMIN_DATA'] : ((isset($user->lang['ADMIN_DATA'])) ? $user->lang['ADMIN_DATA'] : '{ ADMIN_DATA }')); ?></legend>
+							<table>
+								<tr>
+									<th style="padding: 15px 0 0 0px;"><?php echo ((isset($this->_rootref['L_USER_NAME'])) ? $this->_rootref['L_USER_NAME'] : ((isset($user->lang['USER_NAME'])) ? $user->lang['USER_NAME'] : '{ USER_NAME }')); ?>:</th>
+									<td><input type="text" name="USER_NAME" id="textarea-input" value="<?php echo $_post_val['USER_NAME']; ?>"/></td>
+								</tr>
+								<tr>
+									<th style="padding: 15px 0 0 0px;"><?php echo ((isset($this->_rootref['L_PASSWORD'])) ? $this->_rootref['L_PASSWORD'] : ((isset($user->lang['PASSWORD'])) ? $user->lang['PASSWORD'] : '{ PASSWORD }')); ?>:</th>
+									<td><input type="password" name="PASSWORD" id="textarea-input" value="<?php echo $_post_val['PASSWORD']; ?>"/></td>
+								</tr>
+								<tr>
+									<th style="padding: 15px 0 0 0px;"><?php echo ((isset($this->_rootref['L_PASSWORD_W'])) ? $this->_rootref['L_PASSWORD_W'] : ((isset($user->lang['PASSWORD_W'])) ? $user->lang['PASSWORD_W'] : '{ PASSWORD_W }')); ?>:</th>
+									<td><input type="password" name="PASSWORD_W" id="textarea-input" value="<?php echo $_post_val['PASSWORD_W']; ?>"/></td>
+								</tr>
+							</table>
+						</fieldset>
+						<br/>
+						<fieldset>
+							<legend><?php echo ((isset($this->_rootref['L_OTHER'])) ? $this->_rootref['L_OTHER'] : ((isset($user->lang['OTHER'])) ? $user->lang['OTHER'] : '{ OTHER }')); ?></legend>
+								<table>
+								<tr>
+									<th style="padding: 15px 0 0 0px;"><?php echo ((isset($this->_rootref['L_YOUR_EMAIL'])) ? $this->_rootref['L_YOUR_EMAIL'] : ((isset($user->lang['YOUR_EMAIL'])) ? $user->lang['YOUR_EMAIL'] : '{ YOUR_EMAIL }')); ?>:</th>
+									<td><input type="text" name="ADRESS" id="input-text" value="<?php echo $_post_val['ADRESS']; ?>" /></td>
+								</tr>
+								<tr>
+									<th style="padding: 15px 0 0 0px;"><?php echo ((isset($this->_rootref['L_WHERE'])) ? $this->_rootref['L_WHERE'] : ((isset($user->lang['WHERE'])) ? $user->lang['WHERE'] : '{ WHERE }')); ?></th>
+									<td><input type="text" name="WHERE" id="input-text" value="<?php echo $_post_val['WHERE']; ?>"/></td>
+								</tr>
+								<tr>
+									<th style="padding: 15px 0 0 0px;"><?php echo ((isset($this->_rootref['L_AGB_READ'])) ? $this->_rootref['L_AGB_READ'] : ((isset($user->lang['AGB_READ'])) ? $user->lang['AGB_READ'] : '{ AGB_READ }')); ?></th>
+									<td><input type="checkbox" name="AGB_READ" value="agb_read" id="input-text"/><br/></td>
+								</tr>
+								</table>
+						</fieldset>
+						<br/>
+						<fieldset>
+							<legend>Security</legend>
+								<?php echo (isset($this->_rootref['RECAPTCHA_GET_HTML'])) ? $this->_rootref['RECAPTCHA_GET_HTML'] : ''; ?>
+
+						</fieldset>
+						<br/>
+						<fieldset>
+							<legend>Action</legend>
+							<input type="submit" name="SUBMIT" value="<?php echo ((isset($this->_rootref['L_SEND'])) ? $this->_rootref['L_SEND'] : ((isset($user->lang['SEND'])) ? $user->lang['SEND'] : '{ SEND }')); ?>" /> <input type="reset" value="<?php echo ((isset($this->_rootref['L_RESET'])) ? $this->_rootref['L_RESET'] : ((isset($user->lang['RESET'])) ? $user->lang['RESET'] : '{ RESET }')); ?>" /> 
+						</fieldset>
+					<?php }} ?>
+
+					</p>
+					</form>
+				</div>
+	<?php } } ?>
+
+		</div>
+	</div>

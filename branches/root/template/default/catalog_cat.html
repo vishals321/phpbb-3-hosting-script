@@ -1,0 +1,22 @@
+<div id="content">
+	<div class="post">
+		<h2>{LINK_CATALOG}:</h2>
+		<h3>{L_CAT_DESC}{CAT_NAME}</h3>
+		<!-- IF VAR -->
+			<table style="width:70%;" cellspacing="1">
+			<tr>
+				<th class="th">{L_FORUM_LINK}</th>
+				<th class="th">{L_FORUM_DESC}</th>
+			</tr>
+			<!-- BEGIN result -->
+				<tr class="row2">
+				<td><b><a href="http://www.{result.DOMAIN}.{TITLE}"><!-- IF not result.TITLE -->www.{result.DOMAIN}.[TITLE}<!-- ELSE -->{result.TITLE}<!-- ENDIF --></a></b></td>
+				<td><i>{result.DESCRIPTION}</i></td>
+				</tr>
+			<!-- END result -->
+			</table>
+		<!-- ELSE -->
+			{L_CAT_EMPTY}
+		<!-- ENDIF -->
+	</div>
+</div>

@@ -1,0 +1,60 @@
+	<div id="content">
+		<div class="post">
+			<h2>{LINK_CONTACT}</h2>
+			<h3>{L_CONTACT_DESC}</h3>
+			<div class="entry">
+				<form method="post" action="contact.php">
+				<p>			
+					<!-- IF VAR -->
+					 <fieldset>
+						<legend>{L_MELDUNG}</legend>
+						<!-- BEGIN error -->
+							<!-- IF error.ADRESS -->{error.ADRESS}<!-- ENDIF -->
+							<!-- IF error.RECAPTCHA -->{error.RECAPTCHA}<!-- ENDIF -->
+							<!-- IF error.SENDER -->{error.SENDER}<!-- ENDIF -->
+							<!-- IF error.TOPIC -->{error.TOPIC}<!-- ENDIF -->
+							<!-- IF error.INHALT -->{error.INHALT}<!-- ENDIF -->
+							<!-- IF error.MESSAGE_SEND -->{error.MESSAGE_SEND}<!-- ENDIF -->						 
+						<!-- END error -->
+					 </fieldset>
+					<!-- ENDIF -->
+					<!-- BEGIN post -->
+					<fieldset>
+						<legend>{L_CONTACT_DATA}</legend>
+						<table>
+							<tr>
+								<th style="padding: 15px 0 0 0px;">{L_YOUR_EMAIL}:</th>
+								<td><input type="text" name="ADRESS" id="input-text" value="{post.ADRESS}"/></td>
+							</tr>
+							<tr>
+								<th style="padding: 15px 0 0 0px;">{L_YOUR_NAME}:</th>
+								<td><input type="text" name="SENDER" id="input-text" value="{post.SENDER}"/></td>
+							</tr>
+						</table>
+					</fieldset>
+					<fieldset>
+						<legend>{L_CONTACT_HEADLINE}</legend>
+						<table>
+							<tr>
+								<th style="padding: 15px 0 0 0px;">{L_TOPIC}:</th>
+								<td><input type="text" name="TOPIC" id="textarea-input" value="{post.TOPIC}"/></td>
+							</tr>
+							<tr>
+								<th style="padding: 15px 0 0 0px;">{L_MESSAGE}:</th>
+								<td><textarea name="INHALT" rows="7" cols="30" id="textarea-input">{post.INHALT}</textarea></td>
+							</tr>
+						</table>
+					</fieldset>
+					<!-- END post -->
+					<fieldset>
+						<legend>Security</legend>
+							{RECAPTCHA_GET_HTML}
+					</fieldset>
+					<fieldset>
+						<legend>Action</legend>
+						<input type="submit" name="SUBMIT" value="{L_SEND}" /> <input type="reset" value="{L_RESET}" />
+					</fieldset>
+				</p>
+			</div>
+		</div>
+	</div>

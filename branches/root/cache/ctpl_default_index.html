@@ -1,0 +1,34 @@
+<div id="content">
+		<div class="post">
+			<h2><?php echo ((isset($this->_rootref['L_WELCOME'])) ? $this->_rootref['L_WELCOME'] : ((isset($user->lang['WELCOME'])) ? $user->lang['WELCOME'] : '{ WELCOME }')); ?></h2>
+			<h3><?php echo ((isset($this->_rootref['L_RIGHT_HERE1'])) ? $this->_rootref['L_RIGHT_HERE1'] : ((isset($user->lang['RIGHT_HERE1'])) ? $user->lang['RIGHT_HERE1'] : '{ RIGHT_HERE1 }')); echo (isset($this->_rootref['TITLE'])) ? $this->_rootref['TITLE'] : ''; echo ((isset($this->_rootref['L_RIGHT_HERE2'])) ? $this->_rootref['L_RIGHT_HERE2'] : ((isset($user->lang['RIGHT_HERE2'])) ? $user->lang['RIGHT_HERE2'] : '{ RIGHT_HERE2 }')); ?></h3>
+			<div class="entry">
+				<p><?php echo (isset($this->_rootref['TITLE'])) ? $this->_rootref['TITLE'] : ''; echo ((isset($this->_rootref['L_CONTENT'])) ? $this->_rootref['L_CONTENT'] : ((isset($user->lang['CONTENT'])) ? $user->lang['CONTENT'] : '{ CONTENT }')); echo (isset($this->_rootref['TITLE'])) ? $this->_rootref['TITLE'] : ''; ?></b></p>
+			</div>
+		</div>
+	</div>
+	<!-- end #content -->
+	<div id="sidebar">
+		<ul>
+			<li style="float:left;">
+				<h2><?php echo ((isset($this->_rootref['L_WHAT_YOU_GET'])) ? $this->_rootref['L_WHAT_YOU_GET'] : ((isset($user->lang['WHAT_YOU_GET'])) ? $user->lang['WHAT_YOU_GET'] : '{ WHAT_YOU_GET }')); ?></h2>
+				<ul>
+					<li><?php echo ((isset($this->_rootref['L_FEATURE1'])) ? $this->_rootref['L_FEATURE1'] : ((isset($user->lang['FEATURE1'])) ? $user->lang['FEATURE1'] : '{ FEATURE1 }')); ?></li>
+					<li><?php echo ((isset($this->_rootref['L_FEATURE2'])) ? $this->_rootref['L_FEATURE2'] : ((isset($user->lang['FEATURE2'])) ? $user->lang['FEATURE2'] : '{ FEATURE2 }')); echo (isset($this->_rootref['TITLE'])) ? $this->_rootref['TITLE'] : ''; ?></li>
+					<li><?php echo ((isset($this->_rootref['L_FEATURE3'])) ? $this->_rootref['L_FEATURE3'] : ((isset($user->lang['FEATURE3'])) ? $user->lang['FEATURE3'] : '{ FEATURE3 }')); ?></li>
+					<li><?php echo ((isset($this->_rootref['L_FEATURE4'])) ? $this->_rootref['L_FEATURE4'] : ((isset($user->lang['FEATURE4'])) ? $user->lang['FEATURE4'] : '{ FEATURE4 }')); ?></li>
+					<li><a href="functions.php">Read more</a></li>
+				</ul>
+			</li>
+			<li style="margin-left:50px; float:left;">
+				<h2><?php echo ((isset($this->_rootref['L_FREE'])) ? $this->_rootref['L_FREE'] : ((isset($user->lang['FREE'])) ? $user->lang['FREE'] : '{ FREE }')); ?></h2>
+				<p><?php echo ((isset($this->_rootref['L_FREE_DESC'])) ? $this->_rootref['L_FREE_DESC'] : ((isset($user->lang['FREE_DESC'])) ? $user->lang['FREE_DESC'] : '{ FREE_DESC }')); ?></p>
+			</li>
+			<li style="float:right;">
+				<h2><?php echo ((isset($this->_rootref['L_BEST_SOLUTIONS'])) ? $this->_rootref['L_BEST_SOLUTIONS'] : ((isset($user->lang['BEST_SOLUTIONS'])) ? $user->lang['BEST_SOLUTIONS'] : '{ BEST_SOLUTIONS }')); ?></h2>
+				<p><?php echo ((isset($this->_rootref['L_BEST_SOLUTIONS_DESC'])) ? $this->_rootref['L_BEST_SOLUTIONS_DESC'] : ((isset($user->lang['BEST_SOLUTIONS_DESC'])) ? $user->lang['BEST_SOLUTIONS_DESC'] : '{ BEST_SOLUTIONS_DESC }')); ?></p>
+			</li>
+		</ul>
+	</div>
+	<!-- end #sidebar -->
+	<div style="clear: both;">&nbsp;</div>
