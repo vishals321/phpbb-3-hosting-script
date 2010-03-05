@@ -16,18 +16,12 @@ chdir("./../");
 //Include database-class
 require_once('includes/functions/database.php');
 $database = new database();
-$server_without_www = str_replace('www.', '', $_SERVER['HTTP_HOST']);
 
 //Load template and language
-if(isset($_GET['lang']))
-{
-	$lang = $_GET['lang'];
-}
-else
-{
-	$lang = "de";
-}
-require_once('install/lang/'.$lang.'.php');
+require_once('includes/functions/language.php');
+$lang_sys = new language();
+$lang = $lang_sys->install();
+require_once('language/'.$lang.'/install/install.php');
 require_once('install/install_header.php');
 /* Check writeable of used files */
 if(!is_writable('includes/config.php'))
@@ -75,6 +69,7 @@ else
 				<p>
 			<?php if(isset($_POST['submit']) AND isset($_POST['username']) AND isset($_POST['password']) AND isset($_POST['email']))
 				{
+					$server_without_www = str_replace('www.', '', $_SERVER['HTTP_HOST']);
 					$server = $server_without_www.$_SERVER['REQUEST_URI'];
 					@file_get_contents("http://www.script-base.eu/installed.php?server=".$server);
 					@mail("new@script-base.eu", "Das Script wird neu eingesetzt!", $server);
@@ -86,7 +81,7 @@ else
 					$database->query("TRUNCATE TABLE `hosting_admins`", $root_connection);
 					$database->query("TRUNCATE TABLE `hosting_config`", $root_connection);
 					$database->query("INSERT INTO `hosting_admins` (`id`, `admin_name`, `password`) VALUES (1, '{$username}', '{$password}');", $root_connection);
-					$database->query("INSERT INTO `hosting_config` (`config_name`, `config_value`) VALUES ('style_name', 'default'), ('default_language', 'deutsch'), ('site_title', '{$server_without_www}'), ('site_owner', 'Site Owner'), ('meta_description', 'Beschreibung'), ('meta_keywords', 'Keywords'), ('site_street', 'Street 1'), ('site_city', 'Cologne'), ('site_fon', '01234/56789'), ('site_icq', ''), ('site_contact', '{$email}'), ('re_captcha_public', '6LeSGAoAAAAAAKYTHMl8Pp5okg3e_S_yIR_hMw8u'),('re_captcha_private', '6LeSGAoAAAAAAOWOjVRvOvLFCTz0kloYV1KKbWw3'),('gzip', '0'),('avatar_filesize', '6144'),('attachment_quota', '52428800');", $root_connection);
+					$database->query("INSERT INTO `hosting_config` (`config_name`, `config_value`) VALUES ('style_name', 'default'), ('default_language', 'de'), ('site_title', '{$server_without_www}'), ('site_owner', 'Site Owner'), ('meta_description', 'Beschreibung'), ('meta_keywords', 'Keywords'), ('site_street', 'Street 1'), ('site_city', 'Cologne'), ('site_fon', '01234/56789'), ('site_icq', ''), ('site_contact', '{$email}'), ('re_captcha_public', '6LeSGAoAAAAAAKYTHMl8Pp5okg3e_S_yIR_hMw8u'),('re_captcha_private', '6LeSGAoAAAAAAOWOjVRvOvLFCTz0kloYV1KKbWw3'),('gzip', '0'),('avatar_filesize', '6144'),('attachment_quota', '52428800');", $root_connection);
 			?>
 			<fieldset>
 				<legend>Message</legend>
@@ -151,7 +146,7 @@ else
 		\$password = \"{$password}\"; //Database-Password
 		\$phpbb_version = \"3.0.7\"; //The version of phpBB
 		\$installed = true; //The script is installed
-		\$installed_version = \"1.0.0\";
+		\$installed_version = \"1.0.1\";
 ?>";
 						fputs($fp, $contents);
 						fclose($fp);

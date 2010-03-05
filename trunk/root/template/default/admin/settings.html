@@ -28,11 +28,19 @@
 			</dl>
 			<dl>
 				<dt><label for="style_name">Style:</label><br /></dt>
-				<dd><input id="style_name" type="text" size="25" name="style_name" value="{settings.STYLE_NAME}" /></dd>
+				<dd>
+					<select name="style_name" >
+							{settings.STYLE_NAME}
+					</select>
+				</dd>
 			</dl>
 			<dl>
 				<dt><label for="default_language">{L_LANGUAGE_DESC}:</label><br /></dt>
-				<dd><input id="default_language" type="text" size="25" name="default_language" value="{settings.DEFAULT_LANGUAGE}" /></dd>
+				<dd>
+					<select name="default_language" >
+						{settings.DEFAULT_LANGUAGE}
+					</select>
+				</dd>
 			</dl>
 		</fieldset>
 		<fieldset>
@@ -73,7 +81,12 @@
 			<legend>{L_FORUM_SETTINGS}</legend>
 			<dl>
 				<dt><label for="gzip">{L_GZIP}</label><br /><span class="explain">{L_GZIP_DESC}</span></dt>
-				<dd><input id="gzip" type="text" size="25" name="gzip" value="{settings.GZIP}" /></dd>
+				<dd>
+					<select name="gzip" >
+						<option value="1"  <!-- IF settings.GZIP == 1 -->selected="selected"<!-- ENDIF -->>{L_ACTIVE}</option>
+						<option value="0"  <!-- IF settings.GZIP == 0 -->selected="selected"<!-- ENDIF -->>{L_INACTIVE}</option>						
+					</select>
+				</dd>
 			</dl>
 			<dl>
 				<dt><label for="avatar_filesize">{L_AVATAR_FILESIZE}</label><br /><span class="explain">{L_AVATAR_FILESIZE_DESC}</span></dt>

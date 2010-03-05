@@ -9,19 +9,26 @@
 */
 class database
 {
+	private function error($error_message = "",$query = "No Query Executed")
+	{
+		require_once('includes/functions/error.php');
+		$error_message = mysql_error();
+		$error = new error();
+		$error->output('MySQL-Error',$error_message,$query);
+	}
 /* Open database connection */
 	public function connect($host, $database, $username, $password, $new_connection = NULL)
 	{
 		$connection = @mysql_connect($host, $username, $password, true);
-		if (is_resource($connection) == false)
+		if(is_resource($connection) == false)
 		{
-			$this->error();
+			$this->error(false, 'Want to connect to '.$host.' with user '.$username);
 		}
 		else
 		{
 			if(@mysql_select_db($database, $connection) == false)
 			{
-				$this->error();
+				$this->error(false, 'While trying to connect to '.$database);
 			}
 			else
 			{
@@ -49,7 +56,7 @@ class database
 			$this->query_result = mysql_query($query, $connection);
 
 			if ($this->query_result == false) {
-				$this->error($query);
+				$this->error(false,$query);
 			} else {
 				return $this->query_result;
 			}
@@ -98,36 +105,5 @@ class database
 			return true;
 		}
 	}
-/* If is error while handle with the database*/
-	public function error($query = "No Query Executed")
-		{
-			$error_message = mysql_error();
-			$error_html = "\t\t\t<!DOCTYPE HTML PUBLIC \"-//IETF//DTD HTML 2.0//EN\">
-			<html>
-				<head>
-					<meta http-equiv=\"Content-Type\" content=\"text/html; charset=iso-8859-1\" />
-					<title>MySQL Fehler</title>
-					<style type=\"text/css\">
-					    	* { font-size: 100%; margin: 0; padding: 0; }
-						body { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 75%; margin: 10px; background: #FFFFFF; color: #000000; }
-						a:link, a:visited { text-decoration: none; color: #005fa9; background-color: transparent; }
-						a:active, a:hover { text-decoration: underline; }						
-						textarea { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 11px; border: 1px dashed #000000; background: #FFFFFF; padding: 5px; background: #f4f4f4; }
-					</style>
-				</head>
-				<body>
-					<p>
-						<b>MySQL Fehler</b>
-						<br /><br />
-						Ein MySQL Fehler trat auf. 
-						Bitte kopiere die nachfolgende Fehler-Meldung und sende uns diese, wenn möglich, über unser <a href=\"contact.php\">Kontakt-Formular</a>.
-						<br /><br />
-						<textarea readonly=\"readonly\" rows=\"15\" cols=\"40\" style=\"width:500px;\">Aktuelle Zeit: ".date("F j, Y, g:i:s a")."\nIP Addresse: {$_SERVER['REMOTE_ADDR']}\rFehler: {$error_message}\nQuery Executed: {$query}</textarea>
-					</p>		
-				</body>
-			</html>";
-			exit($error_html);
-			return;
-		}
 }
 ?>
