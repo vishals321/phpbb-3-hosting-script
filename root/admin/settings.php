@@ -76,14 +76,38 @@ while ($row = mysql_fetch_array($sql)) {
 	$setting[$row['config_name']] = $row['config_value'];
 }
 $setting['attachment_quota'] = $setting['attachment_quota']/1048576;
+$i = 0;
+$languages = $language->check_available_languages();
+$count = count($languages);
+while ($count > $i) {
+	$selected = '';
+	if($languages[$i] == $setting['default_language'])
+	{
+		$selected = 'selected="selected"';
+	}
+	$lang_output .= "<option value=\"{$languages[$i]}\" $selected >{$languages[$i]}</option>";
+	$i++;
+}
+$i = 0;
+$templates = $template->check_available_templates();
+$count = count($templates);
+while ($count > $i) {
+	$selected = '';
+	if($templates[$i] == $setting['style_name'])
+	{
+		$selected = 'selected="selected"';
+	}
+	$template_output .= "<option value=\"{$templates[$i]}\" $selected >{$templates[$i]}</option>";
+	$i++;
+}
 /* Set up template vars */
 $arr = array(
 		'SITE_TITLE' => $setting['site_title'],
 		'META_KEYWORDS' => $setting['meta_keywords'],
 		'META_DESCRIPTION' => $setting['meta_description'],
 		'SITE_CONTACT' => $setting['site_contact'],
-		'STYLE_NAME' => $setting['style_name'],
-		'DEFAULT_LANGUAGE' => $setting['default_language'],
+		'STYLE_NAME' => $template_output,
+		'DEFAULT_LANGUAGE' => $lang_output,
 		'SITE_OWNER' => $setting['site_owner'],
 		'SITE_STREET' => $setting['site_street'],
 		'SITE_CITY' => $setting['site_city'],

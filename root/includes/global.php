@@ -11,7 +11,7 @@
 header('Content-Type: text/html; charset=utf-8', true);
 require_once('includes/config.php');
 require_once('includes/functions/database.php');
-$database = new database();
+$database = new database($error);
 $root_connection = $database->connect($host, $database_name, $user, $password);
 unset($user);
 /* Load title, description and so on */

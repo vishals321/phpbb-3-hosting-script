@@ -10,6 +10,24 @@
 */
 class template
 {
+	public function check_available_templates()
+	{
+		$dir = "./template/";
+		if ($handle = opendir($dir))
+		{
+		   while (false !== ($file = readdir($handle))) {
+			   if ($file != "." && $file != ".."&& $file != ".svn")
+			   {
+					if(is_dir($dir.$file))
+					{
+						$available[] = $file;
+					}
+			   }
+		   }
+		   closedir($handle);
+		}
+		return $available;
+	}
 	/** variable that holds all the data we'll be substituting into
 	* the compiled templates. Takes form:
 	* --> $this->_tpldata[block][iteration#][child][iteration#][child2][iteration#][variablename] == value
